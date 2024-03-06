@@ -1,1 +1,1 @@
-export type Type = 'string' | 'number' | 'date' | 'object' | 'array';
+export type Type = 'string' | 'number' | 'boolean' | 'date' | 'object' | 'array' | 'any' | 'unknow';

@@ -1,2 +1,4 @@
 export * from './TransformerRepository';
-export * from './TemplateRepository';
+export * from './TemplateSchemaRepository';
+export * from './TemplateGeneratorAdapter';
+export * from './TemplateRenderAdapter';

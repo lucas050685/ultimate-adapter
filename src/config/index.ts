@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const config = {
-  secret: process.env.SECRETE?.trim() ?? '',
+  port: parseInt(process.env.PORT ?? '3001', 10),
+  openAiApiKey: process.env.OPENAI_API_KEY ?? '',
 };
 
 export default config;
