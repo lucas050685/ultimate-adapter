@@ -1,44 +1,30 @@
-# Boilerplate Typescript
-This is a simple ts boilerplate.
+# React + TypeScript + Vite
 
-# Features
-## Tests
-This repository uses jest as default test engine.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-To run tests use:
-```bash
-yarn test
-# OR
-yarn test:watch
-```
+Currently, two official plugins are available:
 
-## Alias
-This repository uses alias path to easily import internal modules and components. For example, to import the function `example` from file `./src/lib/example.ts` you can simply use:
-```ts
-import { example } from '~/lib/example';
-...
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-It means that anything inside the `src` folder can be imported as `~/`;
+## Expanding the ESLint configuration
 
-## Code quality
-This project uses ESLint to ensure the good practice of code quality.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-To get a better development experience please enable the eslint auto save. It will prettify your code always when a file is saved. So follow these steps:
+- Configure the top-level `parserOptions` property like this:
 
-1 - If you're using VS Code, please install the [ESLint]() plugin;
-
-2 - In VS Code open the file [`~/.config/Code/User/settings.json`](vscode://~/.config/Code/User/settings.json);
-
-3 - Add the following lines:
-```json
-{ 
-  "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
   },
-  "eslint.validate": ["javascript"],
-  "eslint.enable": true,
-  "eslint.format.enable": true
 }
 ```
-4 - Restart VS Code if needed.
+
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
