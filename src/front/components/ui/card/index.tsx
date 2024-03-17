@@ -76,4 +76,16 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+const CardColContainer = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col gap-2", className)}
+    {...props}
+  />
+))
+CardColContainer.displayName = "CardColContainer"
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, CardColContainer }

@@ -10,13 +10,15 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        success: "bg-success text-success-foreground hover:bg-success/90",
+        action: "bg-action text-action-foreground hover:bg-action/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        ghost: "opacity-50 hover:opacity-100 hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
@@ -35,7 +37,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean
 }
 
@@ -53,4 +55,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-export { Button, buttonVariants }
+
+export type ButtonGroupProps = React.PropsWithChildren & React.HTMLAttributes<HTMLDivElement>;
+
+function ButtonGroup({ children, className }: ButtonGroupProps) {
+  const defaultCalssName = 'flex gap-1';
+
+  return (
+    <div className={cn(defaultCalssName, className)} >
+      {children}
+    </div>
+  )
+}
+ButtonGroup.displayName = "ButtonGroup"
+
+export { Button, buttonVariants, ButtonGroup }

@@ -1,23 +1,20 @@
-import { Button, useDrawer, Container, Card, CardHeader, CardContent, CardTitle, CardDescription, CardFooter } from "~/front/components/ui";
-import { Nuke } from "~/front/components/nuke";
+import { Container, CardColContainer } from "~/front/components/ui";
+import { TransformerCard, MainActions } from "~/front/components";
+import { transformers } from "~/front/mocks";
 
-export function MainPage(){
-  const { push } = useDrawer();
-
+export function MainPage() {
   return (
-    <Container>
-      <Card>
-        <CardHeader>
-            <CardTitle>This is my transformer</CardTitle>
-            <CardDescription>This is the description of my Transformer</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Button onClick={()=> push(<Nuke />)}>Open Drawer</Button>
-        </CardContent>
-        <CardFooter>
-          <p>20% 80%</p>
-        </CardFooter>
-      </Card>
-    </Container>
+    <>
+      <Container>
+        <MainActions />
+      </Container>
+      <Container>
+        <CardColContainer>
+          {transformers.map((transformer) => {
+            return <TransformerCard transformer={transformer} />;
+          })}
+        </CardColContainer>
+      </Container>
+    </>
   );
 }

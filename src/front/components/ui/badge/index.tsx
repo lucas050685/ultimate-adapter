@@ -8,8 +8,11 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
+
         default:
           "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+        success:
+          "border-transparent bg-success text-success-foreground hover:bg-success/80",
         secondary:
           "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
         destructive:
@@ -25,7 +28,7 @@ const badgeVariants = cva(
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+  VariantProps<typeof badgeVariants> { }
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
@@ -33,4 +36,15 @@ function Badge({ className, variant, ...props }: BadgeProps) {
   )
 }
 
-export { Badge, badgeVariants }
+export interface BadgeContainerProps
+  extends React.HTMLAttributes<HTMLDivElement> { }
+
+function BadgeContainer({ className, children }: BadgeContainerProps) {
+  return (
+    <div className={cn("flex flex-col gap-2", className)}>
+      {children}
+    </div>
+  )
+}
+
+export { Badge, BadgeContainer, badgeVariants }

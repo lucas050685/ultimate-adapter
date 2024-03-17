@@ -11,18 +11,18 @@ export type DrawerTabProps = PropsWithChildren<{
   position?: number,
 }>
 
-export function DrawerTab({ children, id, position = 0 }: DrawerTabProps){
+export function DrawerTab({ children, id, position = 0 }: DrawerTabProps) {
   const { remove } = useContext(DrawerContext);
-  
+
   const close = async () => {
     await remove(id);
   }
 
-  const defaultPadding = 60;
+  const defaultPadding = 200;
   const padding = position * defaultPadding + defaultPadding;
   const bgStyle: CSSProperties = { paddingLeft: `${padding}px` };
-  const bgClassName = `bg-black/10 absolute w-full h-full`;
-  const containerClassName = 'bg-white p-10 relative h-full';
+  const bgClassName = `bg-black/10 absolute w-full h-full z-[9999]`;
+  const containerClassName = 'bg-white p-6 relative h-full';
 
   return (
     <DrawerTabContext.Provider value={{ close, id }}>

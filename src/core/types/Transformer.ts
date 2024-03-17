@@ -1,4 +1,4 @@
-import { EndpointTarget, Method } from './EndpointTarget';
+import { EndpointTarget } from './EndpointTarget';
 
 export type Transformer = {
   id?: string;
@@ -6,6 +6,9 @@ export type Transformer = {
   destinySample: string;
   destinySchema: string;
   endpointTarget?: EndpointTarget;
+
+  title?: string;
+  description?: string;
 };
 
 export type SavedTransformer = { id: string } & Transformer;
