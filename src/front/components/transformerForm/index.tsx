@@ -6,7 +6,9 @@ import {
   InputContainer,
   Input,
   Label,
-  useDrawer
+  useDrawer,
+  JsonInput,
+  SchemaInput
 } from "~/front/components/ui";
 import { DrawerHeader } from "../ui/drawerTab/DrawerHeader";
 
@@ -31,6 +33,12 @@ export function TransformerForm() {
             <Label htmlFor="description">Description</Label>
             <Input id="description" name="description" />
           </InputContainer>
+
+          <InputContainer>
+            <Label htmlFor="sample">Destiny sample</Label>
+            <SchemaInput id="detiny" name="detiny" />
+          </InputContainer>
+
           <ButtonGroup>
             <Button variant="destructive" onClick={close}>Cancel</Button>
             <Button type="submit" variant="action">Save</Button>
