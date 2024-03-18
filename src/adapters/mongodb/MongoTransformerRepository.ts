@@ -33,6 +33,11 @@ export class MongoTransformerRepository implements TransformerRepository {
   async save(transformer: Transformer | SavedTransformer): Promise<SavedTransformer> {
     const collection = await this.getCollection();
     const insertedResult = await collection.insertOne({ ...transformer });
+
+    // TODO: verify if transformer exists
+
+    // TODO: update transformer
+
     const id = insertedResult.insertedId.toString();
     return {
       id,
