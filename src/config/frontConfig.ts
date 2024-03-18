@@ -1,3 +1,5 @@
+const env = import.meta.env;
+
 export const frontConfig = {
-  serverHost: import.meta?.env?.VITE_SERVER_HOST ?? '',
+  serverHost: env?.VITE_SERVER_HOST ?? '',
 }

@@ -18,6 +18,7 @@ export function useTransformers() {
   });
 
   const save = async (transformer: Transformer) => {
+    console.log(frontConfig.serverHost);
     const url = new URL('/api/transformers', frontConfig.serverHost);
     const body = JSON.stringify(transformer);
     const headers: Record<string, string> = {
