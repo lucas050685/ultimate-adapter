@@ -1,8 +1,10 @@
 import { Container, CardColContainer } from "~/front/components/ui";
 import { TransformerCard, MainActions } from "~/front/components";
-import { transformers } from "~/front/mocks";
+import { useTransformers } from "~/front/hooks/useTransformers";
 
 export function MainPage() {
+  const { transformers } = useTransformers();
+
   return (
     <>
       <Container>
@@ -10,8 +12,8 @@ export function MainPage() {
       </Container>
       <Container>
         <CardColContainer>
-          {transformers.map((transformer) => {
-            return <TransformerCard transformer={transformer} />;
+          {transformers.map((transformer, index) => {
+            return <TransformerCard key={`${transformer.id}-${index}`} transformer={transformer} />;
           })}
         </CardColContainer>
       </Container>

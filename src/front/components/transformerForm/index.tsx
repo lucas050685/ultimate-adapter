@@ -7,21 +7,22 @@ import {
   Input,
   Label,
   useDrawer,
-  JsonInput,
   SchemaInput
 } from "~/front/components/ui";
 import { DrawerHeader } from "../ui/drawerTab/DrawerHeader";
+import { useTransformers } from "~/front/hooks/useTransformers";
 
 export function TransformerForm() {
   const { close } = useDrawer();
+  const { save } = useTransformers();
 
-  const onSubmit = (data: any) => {
-    alert(JSON.stringify(data, null, 2));
+  const onSubmit = async (data: any) => {
+    await save(data);
   }
 
   return (
     <Container>
-      <DrawerHeader><h1>Create a new Transformer</h1></DrawerHeader>
+      <DrawerHeader>Create a new Transformer</DrawerHeader>
       <Container variant="sublevel">
         <Form onSubmit={onSubmit}>
           <InputContainer>

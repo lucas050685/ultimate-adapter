@@ -15,7 +15,12 @@ export function Form({ children, onSubmit }: FormProps) {
     const data = parseForm(form);
     if (onSubmit) {
       setSubmiting(true);
-      await onSubmit(data, form);
+      try {
+        await onSubmit(data, form);
+      }
+      catch (e) {
+        console.error('Form submit error', e);
+      }
       setSubmiting(false);
     }
   }
